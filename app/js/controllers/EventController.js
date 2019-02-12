@@ -7,11 +7,13 @@ eventsApp.controller("EventController",
         $scope.mystyle = {color:'red'};
         $scope.buttonDisabled = true;
         $scope.snippet = '<span style="color:red">hi there</span>';
+        $scope.sortOrder = 'name';
 
         $scope.event = {
             name: 'Angular Boot Camp',
-            date: '11/02/2019',
+            date: 1359781015626,
             time: '10:30 am',
+            price: 34,
             location: {
                 address: 'Google Headquarters',
                 city: 'Mountain View',
