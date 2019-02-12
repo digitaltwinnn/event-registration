@@ -1,43 +1,14 @@
-eventsApp.factory('eventData', function() {
+eventsApp.factory('eventData', function($http, $log) {
 
     return {
-        event: {
-            name: 'Angular Boot Camp',
-            date: 1359781015626,
-            time: '10:30 am',
-            price: 34,
-            location: {
-                address: 'Google Headquarters',
-                city: 'Mountain View',
-                province: 'CA'
-            },
-            imageUrl: '/img/angularjs-logo.png',
-            sessions: [
-                {
-                    name: 'Directive Masterclass',
-                    creatorName: "Both Smith",
-                    duration: 1,
-                    level: "Advanced",
-                    abstract: "Learn the ins and outs of Directives. More Text More Text More Text More Text More Text More Text",
-                    upvoteCount: 0
-                },
-                {
-                    name: 'Scope for fun and profit',
-                    creatorName: "John Doe",
-                    duration: 2,
-                    level: "Introductory",
-                    abstract: "Learn about scope within Angular JS. More Text More Text More Text More Text",
-                    upvoteCount: 0
-                },
-                {
-                    name: 'Well Behaved Controllers',
-                    creatorName: "Jane Doe",
-                    duration: 4,
-                    level: "Intermediate",
-                    abstract: "Understand how Controllers behave well. More Text More Text More More Text More Text More Text More Text More Text More Text More Text More Text",
-                    upvoteCount: 0
-                }
-            ]
+        getEvent: function (sucesscb) {
+            $http({method: 'GET', url: 'data/event/1'}).
+                success(function(data, status, headers, config) {
+                    sucesscb(data);
+                }).
+                error (function (data, status, headers, config) {
+                    $log.warn(data, status, headers(), config);
+                });
         }
     };
 });
